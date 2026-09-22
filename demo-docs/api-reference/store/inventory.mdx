@@ -1,0 +1,128 @@
+---
+title: Inventory
+description: Track and update stock levels for pets in the store.
+metaTitle: Inventory | API Reference | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059687207-1jmh4piszzk-e46c005bdd2cfe95354f5a2c3bd304a756a11172.png?fm=auto&auto=compress%2Cformat
+---
+
+## List inventory
+
+> Returns current stock levels for all pets in the store.
+
+**GET** `/inventory`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+**Responses**
+
+`200` An array of inventory entries.
+
+<ResponseField name="petId" field-type="integer" required={true}>
+  The ID of the animal this entry tracks.
+</ResponseField>
+
+<ResponseField name="quantity" field-type="integer" required={true}>
+  Current stock count.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" required={true} enum="available,pending,sold" />
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+## Update stock level
+
+> Updates the stock quantity for a specific pet. Use this to record new arrivals, returns, or manual adjustments.
+> 
+> <Callout kind="alert">
+>   This endpoint is **experimental** — the request shape may change before it reaches stable.
+> </Callout>
+
+**PATCH** `/inventory/{petId}`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+<ParamField path="petId" param-type="integer" required={true}>
+  The ID of the pet to update stock for.
+</ParamField>
+
+**Request body**
+
+<ParamField body="quantity" param-type="integer" required={true}>
+  The new stock count.
+</ParamField>
+
+**Responses**
+
+`200` Updated inventory entry.
+
+<ResponseField name="petId" field-type="integer" required={true}>
+  The ID of the animal this entry tracks.
+</ResponseField>
+
+<ResponseField name="quantity" field-type="integer" required={true}>
+  Current stock count.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" required={true} enum="available,pending,sold" />
+
+`400` The request body is missing required fields or contains invalid values.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+`404` The requested resource could not be found.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>

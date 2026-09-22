@@ -1,0 +1,114 @@
+---
+title: Categories
+description: Manage the species and breed categories used to classify pets.
+metaTitle: Categories | API Reference | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059694049-xm9nvng7u7d-3ea1770ac38e3442f5950536ee55e04b3b33cffd.png?fm=auto&auto=compress%2Cformat
+---
+
+## List categories
+
+> Returns all categories available for classifying pets (e.g. dog, cat, rabbit).
+
+**GET** `/categories`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+**Responses**
+
+`200` An array of categories.
+
+<ResponseField name="name" field-type="string" required={true}>
+  The category name (e.g. Dog, Cat, Rabbit).
+</ResponseField>
+
+<ResponseField name="description" field-type="string">
+  A short description of the category.
+</ResponseField>
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+## Create a category
+
+> Adds a new category for classifying pets.
+
+**POST** `/categories`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+**Request body**
+
+<ParamField body="name" param-type="string" required={true}>
+  The category name (e.g. Dog, Cat, Rabbit).
+</ParamField>
+
+<ParamField body="description" param-type="string">
+  A short description of the category.
+</ParamField>
+
+**Responses**
+
+`201` Category created successfully.
+
+<ResponseField name="name" field-type="string" required={true}>
+  The category name (e.g. Dog, Cat, Rabbit).
+</ResponseField>
+
+<ResponseField name="description" field-type="string">
+  A short description of the category.
+</ResponseField>
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+`400` The request body is missing required fields or contains invalid values.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>

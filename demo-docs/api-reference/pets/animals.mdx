@@ -1,0 +1,194 @@
+---
+title: Animals
+description: Browse and manage individual animals available for adoption.
+metaTitle: Animals | API Reference | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059703075-6ryl9xvs42-e3e837ffdc3ace7898f2d58862381a53418bfa71.png?fm=auto&auto=compress%2Cformat
+---
+
+## List all animals
+
+> Returns a paginated list of all animals in the store. Use `limit` to control page size and `status` to filter by availability.
+
+**GET** `/pets`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+<ParamField query="limit" param-type="integer">
+  Maximum number of animals to return. Defaults to 20, max 100.
+</ParamField>
+
+<ParamField query="status" param-type="string" enum="available,pending,sold">
+  Filter by availability status.
+</ParamField>
+
+**Responses**
+
+`200` A paginated list of animals.
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+## Add an animal
+
+> Adds a new animal to the store. The `name` and `categoryId` fields are required.
+
+**POST** `/pets`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+**Request body**
+
+<ParamField body="name" param-type="string" required={true}>
+  The animal's name.
+</ParamField>
+
+<ParamField body="categoryId" param-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ParamField>
+
+<ParamField body="status" param-type="string" enum="available,pending,sold" />
+
+**Responses**
+
+`201` Animal added successfully.
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+`400` The request body is missing required fields or contains invalid values.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+## Get an animal
+
+> Returns details for a single animal by ID.
+> 
+> <Callout kind="danger">
+>   **This endpoint is deprecated** and will be removed on **5 December 2030**. Use `GET /pets` with a `status` filter instead.
+> </Callout>
+
+**GET** `/pets/{petId}`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true}>
+  Pass your API key as a Bearer token in the `Authorization` header.
+</ParamField>
+
+<ParamField path="petId" param-type="integer" required={true}>
+  The ID of the animal to retrieve.
+</ParamField>
+
+**Responses**
+
+`200` The requested animal.
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+`401` Missing or invalid API key.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>
+
+`404` The requested resource could not be found.
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>

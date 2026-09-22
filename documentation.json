@@ -1,154 +1,315 @@
 {
-  "name": "Starter Kit",
+  "name": "demo Docs",
   "colors": {
     "light": {
-      "brand": "#F97316"
+      "brand": "#346ddb"
     },
     "dark": {
-      "brand": "#FDBA74"
+      "brand": "#346ddb"
     }
   },
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
-        "icon": "book",
-        "groups": [
+        "tab": "Home",
+        "pages": [
           {
-            "group": "Start Here",
-            "icon": "rocket",
+            "show-sidebar": false,
+            "title": "Developer Platform",
+            "path": "demo-docs",
+            "icon": "layers"
+          }
+        ],
+        "icon": "house"
+      },
+      {
+        "tab": "Documentation",
+        "pages": [
+          {
+            "title": "Welcome",
+            "path": "demo-docs/documentation",
+            "icon": "sparkles"
+          },
+          {
+            "group": "Getting Started",
+            "path": "demo-docs/documentation/getting-started/getting-started",
             "pages": [
               {
-                "title": "Introduction",
-                "path": "introduction",
-                "icon": "home"
-              },
-              {
                 "title": "Quickstart",
-                "path": "quickstart",
+                "path": "demo-docs/documentation/getting-started/quickstart",
                 "icon": "zap"
               },
               {
-                "title": "Components",
-                "path": "components",
-                "icon": "code"
+                "title": "Your first project",
+                "path": "demo-docs/documentation/getting-started/your-first-project",
+                "icon": "file-text"
               }
-            ]
+            ],
+            "icon": "rocket"
           },
           {
-            "group": "Components",
-            "icon": "layers",
+            "group": "Core concepts",
+            "path": "demo-docs/documentation/core-concepts/core-concepts",
             "pages": [
               {
-                "title": "Images",
-                "path": "components/images",
-                "icon": "image"
+                "title": "Workspaces and projects",
+                "path": "demo-docs/documentation/core-concepts/workspaces-and-projects",
+                "icon": "layout-grid"
               },
               {
-                "title": "Cards",
-                "path": "components/cards",
-                "icon": "square"
-              },
-              {
-                "title": "Code",
-                "path": "components/code",
-                "icon": "code"
-              },
-              {
-                "title": "Callouts",
-                "path": "components/callouts",
-                "icon": "message-square"
-              },
-              {
-                "title": "Steps",
-                "path": "components/steps",
-                "icon": "list-ordered"
-              },
-              {
-                "title": "Tabs",
-                "path": "components/tabs",
-                "icon": "columns"
+                "title": "Permissions",
+                "path": "demo-docs/documentation/core-concepts/permissions",
+                "icon": "shield"
               }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "icon": "code",
-        "groups": [
-          {
-            "group": "Overview",
-            "icon": "file-text",
-            "pages": [
-              {
-                "title": "Authentication",
-                "path": "authentication",
-                "icon": "lock"
-              }
-            ]
-          },
-          {
-            "group": "Sample Endpoints",
-            "openapi": "openapi.yaml"
-          }
-        ]
-      },
-      {
-        "tab": "Help Center",
-        "icon": "help-circle",
-        "pages": [
-          {
-            "title": "Help Center",
-            "path": "help-center",
-            "icon": "home"
-          },
-          {
-            "group": "FAQs",
-            "icon": "help-circle",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "Documentation Source",
-                "path": "help-center/faq/getting-started"
-              }
-            ]
-          },
-          {
-            "group": "Troubleshooting",
-            "icon": "alert-triangle",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "Page Missing in Sidebar",
-                "path": "help-center/troubleshooting/install-error"
-              }
-            ]
+            ],
+            "icon": "cog"
           },
           {
             "group": "Guides",
-            "icon": "book-open",
-            "expandable": false,
+            "path": "demo-docs/documentation/guides/guides",
             "pages": [
               {
-                "title": "Create Your First Page",
-                "path": "help-center/guides/setup-project"
+                "title": "Custom domains",
+                "path": "demo-docs/documentation/guides/custom-domains",
+                "icon": "globe"
+              },
+              {
+                "title": "Automations",
+                "path": "demo-docs/documentation/guides/automations",
+                "icon": "workflow"
               }
-            ]
+            ],
+            "icon": "book-open"
+          },
+          {
+            "group": "Reference",
+            "path": "demo-docs/documentation/reference/reference",
+            "pages": [
+              {
+                "title": "Configuration",
+                "path": "demo-docs/documentation/reference/configuration",
+                "icon": "settings"
+              },
+              {
+                "title": "Glossary",
+                "path": "demo-docs/documentation/reference/glossary",
+                "icon": "book-a"
+              }
+            ],
+            "icon": "book-marked"
           }
-        ]
+        ],
+        "icon": "book"
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Welcome to the GitBook Petstore API",
+            "path": "demo-docs/api-reference",
+            "pages": [
+              {
+                "title": "Servers & Authentication",
+                "path": "demo-docs/api-reference/welcome-to-the-gitbook-petstore-api/servers-and-authentication",
+                "icon": "server"
+              },
+              {
+                "title": "Getting started",
+                "path": "demo-docs/api-reference/welcome-to-the-gitbook-petstore-api/getting-started",
+                "icon": "rocket"
+              },
+              {
+                "title": "Error responses",
+                "path": "demo-docs/api-reference/welcome-to-the-gitbook-petstore-api/error-responses",
+                "icon": "circle-alert"
+              }
+            ],
+            "icon": "book-marked"
+          },
+          {
+            "group": "Store",
+            "pages": [
+              {
+                "title": "Orders",
+                "path": "demo-docs/api-reference/store/orders",
+                "icon": "receipt"
+              },
+              {
+                "title": "Inventory",
+                "path": "demo-docs/api-reference/store/inventory",
+                "icon": "boxes"
+              }
+            ],
+            "icon": "store"
+          },
+          {
+            "group": "Pets",
+            "pages": [
+              {
+                "title": "Animals",
+                "path": "demo-docs/api-reference/pets/animals",
+                "icon": "file-text"
+              },
+              {
+                "title": "Categories",
+                "path": "demo-docs/api-reference/pets/categories",
+                "icon": "tags"
+              },
+              {
+                "title": "Models",
+                "path": "demo-docs/api-reference/models",
+                "icon": "database"
+              }
+            ],
+            "icon": "folder"
+          }
+        ],
+        "icon": "code"
       },
       {
         "tab": "Changelog",
-        "icon": "clock",
-        "pages": [
+        "path": "demo-docs/changelog",
+        "groups": [
           {
-            "title": "Changelog",
-            "path": "changelog",
-            "icon": "history"
+            "group": "2026",
+            "pages": [
+              {
+                "title": "Product update",
+                "path": "demo-docs/changelog/2026/product-update",
+                "icon": "refresh-cw"
+              },
+              {
+                "title": "Product update",
+                "path": "demo-docs/changelog/2026/product-update-1",
+                "icon": "refresh-cw"
+              }
+            ],
+            "icon": "calendar"
+          },
+          {
+            "group": "2025",
+            "pages": [
+              {
+                "title": "Product update",
+                "path": "demo-docs/changelog/2025/product-update",
+                "icon": "refresh-cw"
+              },
+              {
+                "title": "Product update",
+                "path": "demo-docs/changelog/2025/product-update-1",
+                "icon": "refresh-cw"
+              }
+            ],
+            "icon": "calendar"
           }
-        ]
+        ],
+        "icon": "clock"
+      },
+      {
+        "tab": "Help Center",
+        "path": "demo-docs/help-center",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              {
+                "title": "Getting started checklist",
+                "path": "demo-docs/help-center/getting-started/getting-started-checklist",
+                "icon": "rocket"
+              },
+              {
+                "title": "What's the difference between a workspace and a project?",
+                "path": "demo-docs/help-center/getting-started/whats-the-difference-between-a-workspace-and-a-project",
+                "icon": "layout-grid"
+              },
+              {
+                "title": "Setting up a custom domain",
+                "path": "demo-docs/help-center/getting-started/setting-up-a-custom-domain",
+                "icon": "globe"
+              }
+            ],
+            "icon": "rocket"
+          },
+          {
+            "group": "Plans and billing",
+            "pages": [
+              {
+                "title": "How do I change my plan?",
+                "path": "demo-docs/help-center/plans-billing/how-do-i-change-my-plan",
+                "icon": "credit-card"
+              },
+              {
+                "title": "Billing FAQ",
+                "path": "demo-docs/help-center/plans-billing/billing-faq",
+                "icon": "credit-card"
+              }
+            ],
+            "icon": "credit-card"
+          },
+          {
+            "group": "Admin",
+            "pages": [
+              {
+                "title": "Inviting team members to your workspace",
+                "path": "demo-docs/help-center/admin/inviting-team-members-to-your-workspace",
+                "icon": "users"
+              },
+              {
+                "title": "SSO configuration guide",
+                "path": "demo-docs/help-center/admin/sso-configuration-guide",
+                "icon": "key"
+              },
+              {
+                "title": "Managing API keys",
+                "path": "demo-docs/help-center/admin/managing-api-keys",
+                "icon": "key"
+              }
+            ],
+            "icon": "shield"
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              {
+                "title": "Connecting a third-party app",
+                "path": "demo-docs/help-center/integrations/connecting-a-third-party-app",
+                "icon": "layout-grid"
+              },
+              {
+                "title": "Why isn't my integration syncing?",
+                "path": "demo-docs/help-center/integrations/why-isnt-my-integration-syncing",
+                "icon": "puzzle"
+              },
+              {
+                "title": "API rate limits and quotas",
+                "path": "demo-docs/help-center/integrations/api-rate-limits-and-quotas",
+                "icon": "gauge"
+              }
+            ],
+            "icon": "puzzle"
+          },
+          {
+            "group": "Community",
+            "pages": [
+              {
+                "title": "Contributing to the platform",
+                "path": "demo-docs/help-center/community/contributing-to-the-platform",
+                "icon": "handshake"
+              }
+            ],
+            "icon": "users"
+          }
+        ],
+        "icon": "circle-help"
       }
     ]
-  }
+  },
+  "initialRoute": "demo-docs",
+  "template": "classic",
+  "favicon": "https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059758754-xakh011bmu-icon.png?fm=auto&auto=compress%2Cformat",
+  "customCss": [
+    {
+      "src": "styles/migration.css"
+    }
+  ]
 }

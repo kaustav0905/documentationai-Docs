@@ -1,0 +1,230 @@
+---
+title: Developer Platform
+description: Welcome to your team’s developer platform
+metaTitle: Developer Platform | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059661094-839h7nahvlb-JsKd452Nu8XTrHz68zaF.png?fm=auto&auto=compress%2Cformat
+---
+
+ 
+
+<Columns cols={3}>
+  <Card title="No code" href="https://gitbook-templates.gitbook.io/product-docs/" icon="leaf" image="https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059664102-ijeh9yh1vs-no-code.jpg?fm=auto&auto=compress%2Cformat">
+    Get started with the developer platform in 5 minutes.
+  </Card>
+
+  <Card title="Hosted" href="https://gitbook-templates.gitbook.io/product-docs/" icon="server" image="https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059667015-rlr3yhh1vh8-hosted.jpg?fm=auto&auto=compress%2Cformat">
+    Learn more about hosting the developer platform.
+  </Card>
+
+  <Card title="API reference" href="https://gitbook-templates.gitbook.io/api-reference/" icon="terminal" image="https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059669847-f49gtmsd2q4-api-reference.jpg?fm=auto&auto=compress%2Cformat">
+    Browse, test, and implement APIs.
+  </Card>
+</Columns>
+
+ 
+
+ 
+
+## Get started in minutes
+
+Make your first API call in under 5 minutes.
+
+This quickstart walks through the basic setup: create an account, generate an API key, and send a test request. The examples use the same request in several languages, so you can start with the one that matches your stack.
+
+<Callout kind="info">
+  **Customize your first request**
+
+  Explain what you're building and let AI tweak your quickstart.
+</Callout>
+
+<Callout kind="alert">
+  <strong>Need some help?</strong>
+
+  Troubleshoot common issues or ask for help.
+
+  <Expandable title="I get a 401 Unauthorized error">
+    Check that your API key is present and valid.
+
+    Make sure you replaced `YOUR_API_KEY` in the example.
+
+    Confirm the `Authorization` header uses `Bearer YOUR_API_KEY`.
+  </Expandable>
+
+  <Expandable title="I get a 400 Bad Request error">
+    Check your request body first.
+
+    Make sure the JSON is valid and the `message` field is included.
+
+    Also confirm you send `Content-Type: application/json`.
+  </Expandable>
+
+  <Expandable title="The request succeeds, but the result is not what I expect">
+    Start with the sample payload before testing custom input.
+
+    Check the response `status` field to confirm whether the request was only queued.
+
+    If you change the payload shape, verify the endpoint accepts those fields.
+  </Expandable>
+
+  <Expandable title="My local example does not run">
+    Check that your runtime and dependencies are installed.
+
+    For JavaScript, install the SDK before running the example.
+
+    For Python, make sure `requests` is available in your environment.
+  </Expandable>
+</Callout>
+
+With your first request done, use the guides for deeper setup and the API reference for endpoints and parameters.
+
+[Get started](https://gitbook-templates.gitbook.io/product-docs/getting-started/getting-started) [API reference](https://gitbook-templates.gitbook.io/api-reference/)
+
+ 
+
+ 
+
+<Steps>
+  <Step title="Create your API key" titleType="h3">
+    Set up your account, then generate an API key for local testing and your first integration.
+
+    [Sign up](http://app.gitbook.com/join) [Log in](http://app.gitbook.com/join)
+  </Step>
+
+  <Step title="Make your first request" titleType="h3">
+    Pick a language below, replace `YOUR_API_KEY`, and run.
+
+    <Tabs>
+      <Tab title="JavaScript">
+        ```javascript
+        // Import the SDK
+        import ExampleAPI from "example-api";
+
+        // Initialize the client
+        const client = new ExampleAPI({ apiKey: "YOUR_API_KEY" });
+
+        // Send your first message
+        const response = await client.messages.send({
+          message: "Hello, world!"
+        });
+        ```
+      </Tab>
+
+      <Tab title="Python">
+        ```python
+        import requests
+
+        response = requests.post(
+            "https://api.example.com/messages",
+            headers={
+                "Authorization": "Bearer YOUR_API_KEY",
+                "Content-Type": "application/json",
+            },
+            json={
+                "message": "Hello, world!"
+            },
+        )
+
+        print(response.json())
+        ```
+      </Tab>
+
+      <Tab title="cURL">
+        ```bash
+        curl -X POST https://api.example.com/messages \
+          -H "Authorization: Bearer YOUR_API_KEY" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "message": "Hello, world!"
+          }'
+        ```
+      </Tab>
+
+      <Tab title="Go">
+        ```go
+        package main
+
+        import (
+            "bytes"
+            "fmt"
+            "io"
+            "net/http"
+        )
+
+        func main() {
+            body := []byte(`{"message":"Hello, world!"}`)
+
+            req, err := http.NewRequest("POST", "https://api.example.com/messages", bytes.NewBuffer(body))
+            if err != nil {
+                panic(err)
+            }
+
+            req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+            req.Header.Set("Content-Type", "application/json")
+
+            resp, err := http.DefaultClient.Do(req)
+            if err != nil {
+                panic(err)
+            }
+            defer resp.Body.Close()
+
+            responseBody, err := io.ReadAll(resp.Body)
+            if err != nil {
+                panic(err)
+            }
+
+            fmt.Println(string(responseBody))
+        }
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Parse the response" titleType="h3">
+    If the request succeeds, you should get a response like this:
+
+    ```json title="response.json"
+    {
+      "id": "msg_1234567890",
+      "message": "Hello, world!",
+      "status": "queued",
+      "createdAt": "2026-01-01T12:00:00Z"
+    }
+    ```
+  </Step>
+</Steps>
+
+ 
+
+ 
+
+<Image src="https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059630178-fws46ia62t-placeholder.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+## Learn more about the developer platform
+
+Read guides, watch tutorials, and learn more about working with the developer platform and integrating it with your own stack.
+
+[Guides](https://gitbook-templates.gitbook.io/help-center/) [Documentation](https://gitbook-templates.gitbook.io/product-docs/)
+
+ 
+
+ 
+
+## Join a community of over 3,000 developers
+
+Join our Discord community or create your first PR in just a few steps.
+
+<Columns cols={2}>
+  <Card title="Discord community" href="https://www.gitbook.com/">
+    Join our Discord community to post questions, get help, and share resources with over 3,000 like-minded developers.
+
+    [Join Discord](https://www.gitbook.com/)
+  </Card>
+
+  <Card title="GitHub" href="https://www.gitbook.com/">
+    Our product is 100% open source and built by developers just like you. Head to our GitHub repository to learn how to submit your first PR.
+
+    [Submit a PR](https://github.com/GitbookIO/gitbook-templates)
+  </Card>
+</Columns>
+
+ 

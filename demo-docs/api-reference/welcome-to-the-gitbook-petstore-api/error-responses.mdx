@@ -1,0 +1,30 @@
+---
+title: Error responses
+metaTitle: Error responses | API Reference | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059691221-17iu5wo801j-992ae1db4551e55bc5925a4bc1659c5f420b6b6f.png?fm=auto&auto=compress%2Cformat
+---
+
+All errors follow a consistent structure:
+
+```json
+{
+  "error": {
+    "code": "not_found",
+    "message": "The requested resource could not be found.",
+    "status": 404
+  }
+}
+```
+
+| Status | Meaning |
+| --- | --- |
+| `400` | Bad request — check your request body |
+| `401` | Unauthorized — missing or invalid API key |
+| `403` | Forbidden — insufficient permissions |
+| `404` | Not found |
+| `429` | Rate limited — back off and retry |
+| `500` | Server error |
+
+<Callout kind="alert">
+  This API is for demo purposes only — **don't** use it in production.
+</Callout>

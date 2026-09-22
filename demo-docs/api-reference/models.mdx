@@ -1,0 +1,133 @@
+---
+title: Models
+metaTitle: Models | API Reference | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059640338-frotep7jiws-e7fdc4bc0793dfbd2c44182942e65dace38bfca6.png?fm=auto&auto=compress%2Cformat
+---
+
+## The PetStatus object
+
+`string`, one of: `available`, `pending`, `sold`
+
+## The NewPet object
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+## The Pet object
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+## The Pets object
+
+An array of `Pet` objects:
+
+<ResponseField name="name" field-type="string" required={true}>
+  The animal's name.
+</ResponseField>
+
+<ResponseField name="categoryId" field-type="integer" required={true}>
+  The ID of the category this animal belongs to.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" enum="available,pending,sold" />
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+## The NewCategory object
+
+<ResponseField name="name" field-type="string" required={true}>
+  The category name (e.g. Dog, Cat, Rabbit).
+</ResponseField>
+
+<ResponseField name="description" field-type="string">
+  A short description of the category.
+</ResponseField>
+
+## The Category object
+
+<ResponseField name="name" field-type="string" required={true}>
+  The category name (e.g. Dog, Cat, Rabbit).
+</ResponseField>
+
+<ResponseField name="description" field-type="string">
+  A short description of the category.
+</ResponseField>
+
+<ResponseField name="id" field-type="integer" required={true}>
+  Unique identifier assigned on creation.
+</ResponseField>
+
+## The Order object
+
+<ResponseField name="id" field-type="integer">
+  Unique order identifier.
+</ResponseField>
+
+<ResponseField name="petId" field-type="integer">
+  The ID of the animal in this order.
+</ResponseField>
+
+<ResponseField name="quantity" field-type="integer">
+  Number of units ordered.
+</ResponseField>
+
+<ResponseField name="shipDate" field-type="string">
+  Expected or actual ship date in ISO 8601 format.
+</ResponseField>
+
+<ResponseField name="complete" field-type="boolean">
+  Whether the order has been fulfilled.
+</ResponseField>
+
+## The InventoryItem object
+
+<ResponseField name="petId" field-type="integer" required={true}>
+  The ID of the animal this entry tracks.
+</ResponseField>
+
+<ResponseField name="quantity" field-type="integer" required={true}>
+  Current stock count.
+</ResponseField>
+
+<ResponseField name="status" field-type="string" required={true} enum="available,pending,sold" />
+
+## The InventoryUpdate object
+
+<ResponseField name="quantity" field-type="integer" required={true}>
+  The new stock count.
+</ResponseField>
+
+## The Error object
+
+<ResponseField name="code" field-type="string" required={true}>
+  A machine-readable error code.
+</ResponseField>
+
+<ResponseField name="message" field-type="string" required={true}>
+  A human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="status" field-type="integer" required={true}>
+  The HTTP status code.
+</ResponseField>

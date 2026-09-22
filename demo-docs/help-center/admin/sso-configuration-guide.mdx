@@ -1,0 +1,49 @@
+---
+title: SSO configuration guide
+description: Configure single sign-on so your team can log in with your existing identity provider.
+metaTitle: SSO configuration guide | Help Center | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059650211-psd12gc0xw-C6wfWaHFUfGqaI0LEcc9.png?fm=auto&auto=compress%2Cformat
+---
+
+Single sign-on (SSO) lets your team authenticate using your existing identity provider (IdP) rather than a separate password. SSO is available on Business and Enterprise plans.
+
+### Supported providers
+
+We support any SAML 2.0-compatible identity provider, including most enterprise IdPs. Check your provider's documentation for instructions on creating a SAML application.
+
+### Setting up SSO
+
+<Steps>
+  <Step title="Create an application in your IdP" titleType="h3">
+    In your identity provider's admin console, create a new SAML application. You'll need the following values from our settings page:
+
+    - **ACS URL** (also called the Reply URL or Callback URL)
+    - **Entity ID** (also called the Audience URI)
+
+    These are available under **Settings → Security → SSO**.
+  </Step>
+
+  <Step title="Copy your IdP metadata" titleType="h3">
+    From your identity provider, copy the **Metadata URL** or download the **Metadata XML** file.
+  </Step>
+
+  <Step title="Configure SSO in your workspace" titleType="h3">
+    Go to **Settings → Security → SSO**, paste your Metadata URL (or upload the XML file), and click **Save**.
+  </Step>
+
+  <Step title="Test the connection" titleType="h3">
+    Click **Test SSO** to verify the configuration before enabling it for your whole team. A test login window will open — complete the login and you'll see a success or error message.
+  </Step>
+
+  <Step title="Enable SSO" titleType="h3">
+    Once the test passes, toggle **Enforce SSO** to on. All workspace members will now be required to log in via your IdP.
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+  Make sure you can log in via SSO before enabling enforcement. If SSO breaks after enforcement is on, contact support — we can disable it for you from the backend.
+</Callout>
+
+### Provisioning and deprovisioning
+
+With SCIM provisioning enabled, users are automatically added to or removed from your workspace when you add or remove them in your IdP. SCIM setup is available under **Settings → Security → SCIM**.

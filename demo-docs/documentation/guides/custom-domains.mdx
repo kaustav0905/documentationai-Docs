@@ -1,0 +1,106 @@
+---
+title: Custom domains
+description: Replace your auto-generated subdomain with your own domain, with automatic SSL.
+metaTitle: Custom domains | Documentation | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059684324-vbbafsoj00a-56a52747d54863f8df67ff3ce908938888c69b66.png?fm=auto&auto=compress%2Cformat
+---
+
+By default, every project is published at a subdomain of the platform. You can replace this with your own domain on any paid plan.
+
+<Callout kind="success">
+  SSL certificates are issued automatically once your domain is verified — there's nothing to install or renew yourself.
+</Callout>
+
+## Before you start
+
+You'll need:
+
+- A paid plan (Pro or above)
+- Access to your domain registrar's DNS settings
+- A successful deploy of the project you want to attach
+
+## Steps
+
+<Steps>
+  <Step title="Add your domain in the dashboard" titleType="h3">
+    Go to **Project settings → Domains** and click **Add domain**. Enter the domain or subdomain you want to use:
+
+    ```
+    docs.yourcompany.com
+    ```
+
+    The dashboard will show you the DNS record values you need.
+  </Step>
+
+  <Step title="Configure your DNS" titleType="h3">
+    Add a CNAME record pointing your subdomain at the platform:
+
+    ```
+    Type:  CNAME
+    Name:  docs
+    Value: sites.example-platform.com
+    TTL:   3600
+    ```
+
+    For an apex domain (e.g. `yourcompany.com` without a subdomain), you'll need an ALIAS or ANAME record instead — not all DNS providers support these. Check your provider's docs.
+
+    <Callout kind="info">
+      DNS changes can take up to 48 hours to propagate, but in practice most see them resolve within a few minutes.
+    </Callout>
+  </Step>
+
+  <Step title="Verify and activate" titleType="h3">
+    Return to **Project settings → Domains** and click **Verify**. Once verified, the platform will issue an SSL certificate automatically — usually within a couple of minutes.
+
+    When verification completes, your domain is live.
+  </Step>
+</Steps>
+
+## Multiple domains per project
+
+You can attach multiple domains to a single project — useful for redirecting old URLs or supporting multiple regions:
+
+```yaml
+domains:
+  primary: docs.yourcompany.com
+  redirects:
+    - from: help.yourcompany.com
+      to: docs.yourcompany.com
+      status: 301
+```
+
+## Troubleshooting
+
+<Expandable title="Verification keeps failing">
+  Make sure there are no conflicting DNS records for the same subdomain. An existing A record will block the CNAME.
+
+  Also check that the value of your CNAME exactly matches the one shown in the dashboard — typos in domain names are very common.
+</Expandable>
+
+<Expandable title="SSL certificate not provisioning">
+  SSL is issued after DNS verification succeeds. If it hasn't appeared after 30 minutes:
+
+  1. Confirm your domain still verifies in the dashboard
+  2. Check that your DNS provider isn't using CAA records that block our certificate authority
+  3. Click **Re-verify** to trigger a fresh attempt
+</Expandable>
+
+<Expandable title='Browser shows "Your connection is not private"'>
+  This usually means the certificate hasn't been provisioned yet, or your browser cached an old certificate. Wait a few minutes, then try in an incognito window.
+</Expandable>
+
+<Expandable title="The domain works but redirects break">
+  Redirect chains often get cached aggressively. Test in an incognito window or with `curl -I` to see what's actually being served, ignoring local cache.
+
+  ```bash
+  curl -I https://docs.yourcompany.com
+  ```
+</Expandable>
+
+## Removing a domain
+
+To remove a domain, go to **Project settings → Domains**, click the menu next to the domain, and select **Remove**.
+
+<Callout kind="alert">
+  Removing a domain stops serving traffic immediately. If you've shared this URL externally, set up a redirect first to avoid breaking inbound links.
+</Callout>

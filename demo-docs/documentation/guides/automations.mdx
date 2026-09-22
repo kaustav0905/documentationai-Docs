@@ -1,0 +1,161 @@
+---
+title: Automations
+description: React to deploys, comments, and external events with workflows that run on the platform.
+metaTitle: Automations | Documentation | demo Docs
+ogImage: https://blob-cdn.documentation.ai/org-60cc7af6-c829-4a90-87cd-925ffdb48aa0/doc-2ee19469-6c3e-4e46-a482-af28f0368d84/1790059708791-3howauctlew-d9d593aeabc52a165190bf8c93720491a4eb9682.png?fm=auto&auto=compress%2Cformat
+---
+
+Automations let you run code in response to things that happen on the platform — a deploy completing, a comment being posted, or an external webhook firing. They're a flexible way to wire the platform into the rest of your toolchain.
+
+<Callout kind="info">
+  Automations run in a managed environment with a 30-second timeout. For long-running work, have your automation enqueue a job in your own infrastructure.
+</Callout>
+
+## Triggers
+
+Automations start in response to a **trigger**. The platform supports the following:
+
+| Trigger | Fires when… |
+| --- | --- |
+| `deploy.succeeded` | A build completes and goes live |
+| `deploy.failed` | A build fails |
+| `comment.created` | Someone comments on a deploy preview |
+| `member.invited` | A new member is invited to the workspace |
+| `domain.verified` | A custom domain finishes verification |
+| `webhook.received` | An external service POSTs to your inbound URL |
+| `schedule` | On a cron schedule |
+
+Each automation has exactly one trigger and one or more actions.
+
+## Writing your first automation
+
+Create a new file under `.platform/automations/` in your project:
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```javascript
+    export default {
+      trigger: 'deploy.succeeded',
+      async run(event, ctx) {
+        await ctx.notify('slack', {
+          channel: '#deploys',
+          message: `${event.project} is live at ${event.url}`
+        });
+      }
+    };
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript
+    import type { Automation, DeployEvent } from '@platform/automations';
+
+    export default {
+      trigger: 'deploy.succeeded',
+      async run(event: DeployEvent, ctx) {
+        await ctx.notify('slack', {
+          channel: '#deploys',
+          message: `${event.project} is live at ${event.url}`
+        });
+      }
+    } satisfies Automation;
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    ```python
+    from platform_automations import automation, slack
+
+    @automation(trigger='deploy.succeeded')
+    async def notify_deploy(event, ctx):
+        await slack.post(
+            channel='#deploys',
+            message=f"{event.project} is live at {event.url}"
+        )
+    ```
+  </Tab>
+</Tabs>
+
+The file is detected on your next deploy and registered automatically.
+
+## A more useful example
+
+Here's an automation that posts a summary to a chat channel whenever a pull request preview is ready:
+
+```javascript
+export default {
+  trigger: 'deploy.succeeded',
+  filter: (event) => event.environment === 'preview',
+  async run(event, ctx) {
+    const summary = await ctx.ai.summarise({
+      diff: event.diff,
+      maxLength: 200
+    });
+
+    await ctx.notify('slack', {
+      channel: '#previews',
+      message: `Preview ready: ${event.url}\n\n${summary}`
+    });
+  }
+};
+```
+
+This shows three patterns worth knowing:
+
+- <strong>`filter`</strong> — narrow the events your automation responds to
+- <strong>`ctx.ai`</strong> — a built-in helper for AI summarisation
+- <strong>`ctx.notify`</strong> — send to any configured notification channel
+
+## Local testing
+
+Test your automations locally before deploying:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash
+    platform automations test deploy.succeeded \
+      --fixture fixtures/deploy.json
+    ```
+  </Tab>
+
+  <Tab title="Dashboard">
+    Open your automation in the dashboard and click **Test run**. You can paste in any payload or pick a saved fixture.
+  </Tab>
+</Tabs>
+
+## Scheduling
+
+Use the `schedule` trigger with a cron expression for time-based automations:
+
+```javascript
+export default {
+  trigger: 'schedule',
+  schedule: '0 9 * * 1', // every Monday at 09:00 UTC
+  async run(event, ctx) {
+    const stats = await ctx.api.deploys.weekly();
+    await ctx.notify('email', {
+      to: 'team@example.com',
+      subject: 'Weekly deploy report',
+      body: stats.summary
+    });
+  }
+};
+```
+
+<Callout kind="alert">
+  Schedule times are always in UTC. Adjust your cron expression accordingly if your team works in a different timezone.
+</Callout>
+
+## What's next?
+
+**Common patterns**
+
+- Slack notifications on deploy
+- Posting summaries to issue trackers
+- Daily/weekly digests
+
+**Advanced**
+
+- Chaining automations
+- Calling external APIs
+- Storing state across runs
