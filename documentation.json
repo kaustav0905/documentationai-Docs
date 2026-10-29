@@ -150,58 +150,5 @@
         ]
       }
     ]
-  },
-  "footer": {
-    "links": [
-      {
-        "header": "Product",
-        "items": [
-          {
-            "label": "Quickstart",
-            "href": "quickstart"
-          },
-          {
-            "label": "Components",
-            "href": "components"
-          },
-          {
-            "label": "Changelog",
-            "href": "changelog"
-          }
-        ]
-      },
-      {
-        "header": "Developers",
-        "items": [
-          {
-            "label": "Authentication",
-            "href": "authentication"
-          },
-          {
-            "label": "Status",
-            "href": "https://status.documentation.ai"
-          }
-        ]
-      },
-      {
-        "header": "Company",
-        "items": [
-          {
-            "label": "About",
-            "href": "https://documentation.ai"
-          },
-          {
-            "label": "Contact",
-            "href": "mailto:support@documentation.ai"
-          }
-        ]
-      }
-    ],
-    "socials": {
-      "x": "https://x.com/documentationai",
-      "github": "https://github.com/documentation-ai",
-      "linkedin": "https://www.linkedin.com/company/documentation-ai"
-    },
-    "copyright": "© 2026 Starter Kit. All rights reserved."
   }
 }
