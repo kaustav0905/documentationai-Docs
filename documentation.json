@@ -171,18 +171,6 @@
     {
       "source": "/rename-test/mcp-target",
       "destination": "/rename-test/mcp-target-renamed"
-    },
-    {
-      "source": "/sk/business/ucty-platby/sprava-dokladov",
-      "destination": "https://example.org/bank/sprava-dokladov/"
-    },
-    {
-      "source": "/sk/:page",
-      "destination": "https://example.com/sk/:page"
-    },
-    {
-      "source": "/sk/:section/:page",
-      "destination": "https://example.com/sk/:section/:page"
     }
   ]
 }
