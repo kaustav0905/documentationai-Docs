@@ -48,6 +48,14 @@
               {
                 "title": "Rename test, linking page",
                 "path": "rename-test/linking-page"
+              },
+              {
+                "title": "Space test page",
+                "path": "rename-test/strana s medzerou"
+              },
+              {
+                "title": "Accent test page",
+                "path": "rename-test/strana-porišiť"
               }
             ]
           },
