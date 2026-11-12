@@ -35,7 +35,7 @@
               },
               {
                 "title": "Rename test, MCP target",
-                "path": "rename-test/mcp-target"
+                "path": "rename-test/mcp-target-renamed"
               },
               {
                 "title": "Rename test, editor target",
@@ -166,5 +166,11 @@
         ]
       }
     ]
-  }
+  },
+  "redirects": [
+    {
+      "source": "/rename-test/mcp-target",
+      "destination": "/rename-test/mcp-target-renamed"
+    }
+  ]
 }
