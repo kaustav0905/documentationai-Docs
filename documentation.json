@@ -32,6 +32,22 @@
                 "title": "Components",
                 "path": "components",
                 "icon": "code"
+              },
+              {
+                "title": "Rename test, MCP target",
+                "path": "rename-test/mcp-target"
+              },
+              {
+                "title": "Rename test, editor target",
+                "path": "rename-test/editor-target"
+              },
+              {
+                "title": "Rename test, agent target",
+                "path": "rename-test/agent-target"
+              },
+              {
+                "title": "Rename test, linking page",
+                "path": "rename-test/linking-page"
               }
             ]
           },
