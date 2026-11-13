@@ -179,6 +179,14 @@
     {
       "source": "/rename-test/mcp-target",
       "destination": "/rename-test/mcp-target-renamed"
+    },
+    {
+      "source": "/rename-test/nie-je-šť",
+      "destination": "/rename-test/editor-target"
+    },
+    {
+      "source": "/rename-test/stara adresa - doriešiť",
+      "destination": "/rename-test/editor-target"
     }
   ]
 }
